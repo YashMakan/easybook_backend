@@ -1,7 +1,3 @@
-from django.http import JsonResponse
-import json
-
-
 class Book:
     def __init__(self, kind, book_id, etag, self_link, volume_info, sales_info, access_info, search_info):
         self.kind = kind
