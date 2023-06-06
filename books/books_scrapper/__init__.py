@@ -2,16 +2,16 @@ from typing import List
 
 import requests
 import json
-
 from books.models import Book
-
 from django.http import JsonResponse
+import dotenv
 
 
 class BookScraper:
     def __init__(self):
+        dotenv.load_dotenv()
         self.base_url = "https://www.googleapis.com/books/v1/"
-        self.api_key = "AIzaSyDf82yoe-dtaxS7ZtXq3ZfYv9RuD3MX6hs"
+        self.api_key = dotenv.get_key("GOOGLE_BOOKS_API_KEY")
 
     # get trending books
     def get_trending_books(self):
