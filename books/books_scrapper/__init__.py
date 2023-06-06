@@ -1,17 +1,18 @@
+import os
 from typing import List
-
 import requests
-import json
 from books.models import Book
-from django.http import JsonResponse
-import dotenv
+from pathlib import Path
+from dotenv import load_dotenv
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')
 
 
 class BookScraper:
     def __init__(self):
-        dotenv.load_dotenv()
         self.base_url = "https://www.googleapis.com/books/v1/"
-        self.api_key = dotenv.get_key("GOOGLE_BOOKS_API_KEY")
+        self.api_key = os.getenv("GOOGLE_BOOKS_API_KEY")
 
     # get trending books
     def get_trending_books(self):
