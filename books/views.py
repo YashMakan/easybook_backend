@@ -13,6 +13,12 @@ def trending_books(_):
 @api_view(['POST'])
 def search_books(request):
     book_name = request.data.get('search')
+    isbn = request.data.get('isbn')
     scraper = BookScraper()
-    data = scraper.search_book(book_name)
-    return JsonResponse(data)
+    if book_name:
+        data = scraper.search_book(book_name)
+        return JsonResponse(data)
+    elif isbn:
+        data = scraper.search_book_by_isbn(isbn)
+        return JsonResponse(data)
+
