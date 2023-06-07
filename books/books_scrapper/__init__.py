@@ -16,7 +16,7 @@ class BookScraper:
 
     # get trending books
     def get_trending_books(self):
-        url = self.base_url + "volumes?q=trending&key=" + self.api_key
+        url = self.base_url + "volumes?q=coding&key=" + self.api_key
         response = requests.get(url)
         books = [Book.from_json(book) for book in response.json()['items']]
         return Book.list_to_json_response(books)
