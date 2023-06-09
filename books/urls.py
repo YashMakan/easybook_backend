@@ -7,4 +7,7 @@ urlpatterns = [
 
     # search books
     path('search-books', books_views.search_books, name='Search Books'),
+
+    # weekly trending books
+    path('weekly-trending-books', books_views.weekly_trending_book, name='Weekly Trending Books'),
 ]
