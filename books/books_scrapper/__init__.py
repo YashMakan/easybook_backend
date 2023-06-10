@@ -34,3 +34,10 @@ class BookScraper:
         response = requests.get(url)
         books = [Book.from_json(book) for book in response.json()['items']]
         return Book.list_to_json_response(books)
+
+    # you might like books
+    def you_might_like_books(self):
+        url = self.base_url + "volumes?q=travels&key=" + self.api_key
+        response = requests.get(url)
+        books = [Book.from_json(book) for book in response.json()['items']]
+        return Book.list_to_json_response(books)

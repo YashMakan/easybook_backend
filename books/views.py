@@ -29,3 +29,10 @@ def weekly_trending_book(_):
     scraper = BookScraper()
     data = scraper.search_book_by_isbn(isbn)
     return JsonResponse(data)
+
+
+# you might like books endpoint
+def you_might_like_books(_):
+    scraper = BookScraper()
+    data = scraper.you_might_like_books()
+    return JsonResponse(data)
