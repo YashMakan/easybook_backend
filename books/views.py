@@ -25,7 +25,7 @@ def search_books(request):
 
 @api_view(['GET'])
 def weekly_trending_book(_):
-    isbn = "0063250837"
+    isbn = "0984782850"
     scraper = BookScraper()
     data = scraper.search_book_by_isbn(isbn)
     return JsonResponse(data)
