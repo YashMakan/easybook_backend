@@ -22,8 +22,9 @@ class BookScraper:
         return Book.list_to_json_response(books)
 
     # search book by name
-    def search_book(self, name: str) -> List[Book]:
-        url = self.base_url + "volumes?q=" + name + "&key=" + self.api_key
+    def search_book(self, name: str, start_index: int) -> List[Book]:
+        url = self.base_url + "volumes?q=" + name + "&startIndex=" + str(
+            start_index) + "&maxResults=10" + "&key=" + self.api_key
         response = requests.get(url)
         books = [Book.from_json(book) for book in response.json()['items']]
         return Book.list_to_json_response(books)

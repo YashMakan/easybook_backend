@@ -14,9 +14,10 @@ def trending_books(_):
 def search_books(request):
     book_name = request.data.get('search')
     isbn = request.data.get('isbn')
+    start_index = request.data.get('startIndex')
     scraper = BookScraper()
     if book_name:
-        data = scraper.search_book(book_name)
+        data = scraper.search_book(book_name,  start_index)
         return JsonResponse(data)
     elif isbn:
         data = scraper.search_book_by_isbn(isbn)
